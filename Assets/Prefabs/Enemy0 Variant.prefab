@@ -54,8 +54,12 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b01e2c348374bf245b78e1a0e98b1e09, type: 2}
     - target: {fileID: 6105462474072379122, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
       propertyPath: m_Name
-      value: Enemy1 Variant
+      value: Enemy0 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8798420004124414378, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4195973dc4bea4245a37a3a5b05915d7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

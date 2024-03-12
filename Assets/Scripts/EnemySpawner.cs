@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] WaveConfigSO currentWave;
     void Start()
     {
-        SpawnEnemies();
+        StartCoroutine(SpawnEnemies());
     }
 
     public WaveConfigSO GetCurrentWave()
@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
         return currentWave;
     }
 
-    void SpawnEnemies()
+    IEnumerator SpawnEnemies()
     {
         for (int i = 0; i < currentWave.GetEnemyCount(); i++)
         {
@@ -23,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
                         currentWave.GetStartingWaypoint().position,
                         Quaternion.identity,
                         transform);
+            yield return new WaitForSeconds(currentWave.GetRandomSpawnTime());
         }
     }
 }

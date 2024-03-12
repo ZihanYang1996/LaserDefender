@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "LaserDefender.sln"
+    "dotnet.defaultSolution": "LaserDefender.sln",
+    "unity-code-snippets.style": "allman"
 }
