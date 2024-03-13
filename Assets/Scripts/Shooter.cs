@@ -16,10 +16,15 @@ public class Shooter : MonoBehaviour
     [SerializeField] bool isAI = false;
 
     Coroutine firingCoroutine;
+    AudioPlayer audioPlayer;
 
     [HideInInspector]
     public bool isFiring;
 
+    void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
     void Start()
     {
         if (isAI)
@@ -55,6 +60,11 @@ public class Shooter : MonoBehaviour
     {
         while (true)
         {
+            if (audioPlayer != null && !isAI)
+            {
+                audioPlayer.PlayShootingClip();
+            }
+
             GameObject laser = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Rigidbody2D laserRigidbody = laser.GetComponent<Rigidbody2D>();
             if (laserRigidbody != null)

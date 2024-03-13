@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        rawInput = value.Get<Vector2>();
+        rawInput = value.Get<Vector2>();  // A vector looking like (1, 0) or (-1, 0)
         // Debug.Log("Move: " + rawInput);
     }
 
