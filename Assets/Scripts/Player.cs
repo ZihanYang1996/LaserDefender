@@ -10,11 +10,16 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingRight;
     [SerializeField] float paddingTop;
     [SerializeField] float paddingBottom;
-
+    
+    Shooter shooter;
     Vector2 rawInput;
     Vector2 minBounds;  // for bottomleft corner of the screen
     Vector2 maxBounds;  // for topright corner of the screen
 
+    void Awake()
+    {
+        shooter = GetComponent<Shooter>();
+    }
     void Start()
     {
         InitBounds();
@@ -44,6 +49,15 @@ public class Player : MonoBehaviour
     void OnMove(InputValue value)
     {
         rawInput = value.Get<Vector2>();
-        Debug.Log("Move: " + rawInput);
+        // Debug.Log("Move: " + rawInput);
     }
+
+    void OnFire(InputValue value)
+    {
+        if (shooter != null)
+        {
+            shooter.isFiring = value.isPressed;
+            Debug.Log(value.isPressed);
+        }
+    }    
 }
