@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  explosionEffect: {fileID: 8852276977902415363, guid: b882c0df14d14884aa89b71d127b98d5, type: 3}
+  applyCameraShake: 1
 --- !u!114 &-4686686384485056370
 MonoBehaviour:
   m_ObjectHideFlags: 0
