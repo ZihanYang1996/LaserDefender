@@ -60,6 +60,26 @@ PrefabInstance:
       propertyPath: waveConfig
       value: 
       objectReference: {fileID: 11400000, guid: b01e2c348374bf245b78e1a0e98b1e09, type: 2}
+    - target: {fileID: 5142679471651545424, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142679471651545424, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142679471651545424, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142679471651545424, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142679471651545424, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 6105462474072379122, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
       propertyPath: m_Name
       value: Enemy0 Variant
