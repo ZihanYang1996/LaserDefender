@@ -23,6 +23,32 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += HandleMusic;
+    }
+    
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleMusic;
+    }
+
+    void HandleMusic(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainMenu")
+        {
+            AudioPlayer.instance.PlayMenuMusic();
+        }
+        else if (scene.name == "Game")
+        {
+            AudioPlayer.instance.PlayGameMusic();
+        }
+        else if (scene.name == "GameOver")
+        {
+            AudioPlayer.instance.PlayGameOverMusic();
+        }
+    }
+
     public void StartGame()
     {
         ScoreKeeper.instance.ResetScore();

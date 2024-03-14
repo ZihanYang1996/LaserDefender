@@ -12,13 +12,11 @@ public class Health : MonoBehaviour
     [SerializeField] bool isAI = false;
 
     CameraShake cameraShake;
-    AudioPlayer audioPlayer;
 
 
     void Awake()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
-        audioPlayer = FindObjectOfType<AudioPlayer>();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,9 +35,9 @@ public class Health : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            if (audioPlayer != null)
+            if (AudioPlayer.instance != null)
             {
-                audioPlayer.PlayExplosionClip();
+                AudioPlayer.instance.PlayExplosionClip();
             }
             PlayHitEffect();
             if (isAI)
