@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: health
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: -5106830576632822132, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
+      propertyPath: scoreValue
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1909587442047464151, guid: 87c64a76d37731242b68a04a414cfcb8, type: 3}
       propertyPath: _damage
       value: 50

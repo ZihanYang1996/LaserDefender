@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1874499549
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 22ce4aa5faed7c449b284c379aafc8bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: -4221831305734436238}
   m_Layer: 7
   m_Name: Enemy0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,8 +209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  scoreValue: 10
   explosionEffect: {fileID: 8852276977902415363, guid: b882c0df14d14884aa89b71d127b98d5, type: 3}
   applyCameraShake: 0
+  isAI: 1
 --- !u!114 &1909587442047464151
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,8 +6,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] int health = 100;
+    [SerializeField] int scoreValue = 10;
     [SerializeField] ParticleSystem explosionEffect;
     [SerializeField] bool applyCameraShake = true;
+    [SerializeField] bool isAI = false;
 
     CameraShake cameraShake;
     AudioPlayer audioPlayer;
@@ -29,7 +31,7 @@ public class Health : MonoBehaviour
 
     }
 
-    private void TakeDamage(int damage)
+    void TakeDamage(int damage)
     {
         ShakeCamera();
         health -= damage;
@@ -40,6 +42,14 @@ public class Health : MonoBehaviour
                 audioPlayer.PlayExplosionClip();
             }
             PlayHitEffect();
+            if (isAI)
+            {
+                ScoreKeeper.instance.AddScore(scoreValue);
+            }
+            else
+            {
+                ScoreKeeper.instance.ResetScore();
+            }
             Destroy(gameObject);
         }
     }
@@ -59,5 +69,10 @@ public class Health : MonoBehaviour
         {
             cameraShake.Play();
         }
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }

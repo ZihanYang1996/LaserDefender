@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4686686384485056370}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,8 +160,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  scoreValue: 10
   explosionEffect: {fileID: 8852276977902415363, guid: b882c0df14d14884aa89b71d127b98d5, type: 3}
   applyCameraShake: 1
+  isAI: 0
 --- !u!114 &-4686686384485056370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +255,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 764941079
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a43aacbd33939e4f97bc121cbda83f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
