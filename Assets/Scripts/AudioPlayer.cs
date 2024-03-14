@@ -18,10 +18,10 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] AudioClip menuMusic;
     [SerializeField] AudioClip gameMusic;
     [SerializeField] AudioClip gameOverMusic;
+    [SerializeField] float fadeOutTime = 1f;
+    [SerializeField] float fadeInTime = 1f;
 
     public static AudioPlayer instance { get; private set; }
-
-    AudioSource audioSource;
 
     void Awake()
     {
@@ -35,8 +35,6 @@ public class AudioPlayer : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
-
-        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     public void PlayShootingClip()
@@ -59,9 +57,7 @@ public class AudioPlayer : MonoBehaviour
     {
         if (gameOverMusic != null)
         {
-            audioSource.Stop();
-            audioSource.clip = gameOverMusic;
-            audioSource.Play();
+            switchMusic(gameOverMusic);
         }
     }
 
@@ -69,9 +65,7 @@ public class AudioPlayer : MonoBehaviour
     {
         if (menuMusic != null)
         {
-            audioSource.Stop();
-            audioSource.clip = menuMusic;
-            audioSource.Play();
+            switchMusic(menuMusic);
         }
     }
 
@@ -79,9 +73,7 @@ public class AudioPlayer : MonoBehaviour
     {
         if (gameMusic != null)
         {
-            audioSource.Stop();
-            audioSource.clip = gameMusic;
-            audioSource.Play();
+            switchMusic(gameMusic);
         }
     }
 
@@ -92,5 +84,55 @@ public class AudioPlayer : MonoBehaviour
             Vector3 position = Camera.main.transform.position;
             AudioSource.PlayClipAtPoint(audioClip, position, volume);
         }
+    }
+
+    private void switchMusic(AudioClip music)
+    {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        float startVolume = audioSource.volume;
+
+        StartCoroutine(FadeOut(audioSource, fadeOutTime));
+        StartCoroutine(FadeIn(music, startVolume, fadeInTime));
+    }
+
+    IEnumerator FadeOut(AudioSource audioSource, float fadeTime)
+    {   
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
+            yield return null;
+        }
+
+        audioSource.Stop();
+        Destroy(audioSource);
+    }
+
+    IEnumerator FadeIn(AudioClip music, float originVolume, float fadeTime)
+    {
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.volume = 0;
+        audioSource.loop = true;
+
+        audioSource.clip = music;
+        audioSource.Play();
+
+        // while (audioSource.volume < originVolume)
+        // {
+        //     audioSource.volume += originVolume * Time.deltaTime / fadeTime;
+        //     yield return null;
+        // }
+
+        // Alternative way using Lerp
+        float time = 0;
+        while (time < fadeTime)
+        {
+            audioSource.volume = Mathf.Lerp(0, originVolume, time / fadeTime);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        audioSource.volume = originVolume;  // ensure the volume is set to the original value
     }
 }
