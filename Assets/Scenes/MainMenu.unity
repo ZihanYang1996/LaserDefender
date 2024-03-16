@@ -326,38 +326,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 2796628807369249157, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3026510460570933881, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5888674179118527548, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: fadeTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5888674179118527548, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: gameMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 4020f711d5de7e049a33bceb8381e88a, type: 3}
-    - target: {fileID: 5888674179118527548, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: menuMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 47f734cbca69e93488da068a27b28610, type: 3}
-    - target: {fileID: 5888674179118527548, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: fadeInTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5888674179118527548, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: fadeOutTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5888674179118527548, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
-      propertyPath: gameOverMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 94d08d6c76948c3479b7be972a7486e3, type: 3}
     - target: {fileID: 7675403389782840495, guid: 45c7972926a35f142a5bf58fb381b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
