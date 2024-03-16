@@ -33,6 +33,13 @@ public class CameraShake : MonoBehaviour
             Shake();
             trauma -= Time.deltaTime * traumaDecay;
         }
+        else
+        {
+            //lerp back towards default position and rotation once shake is done
+            trauma = 0f;
+            transform.position = Vector3.MoveTowards(transform.position, initialPosition, Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime);
+        }
     }
 
     public void ShakeCamera(float traumaIncrease)
@@ -47,14 +54,24 @@ public class CameraShake : MonoBehaviour
 
     void Shake()
     {
-        transform.position = initialPosition + GenerateNoise() * shakeMagnitude * trauma * trauma;
+        // Translational shake
+        transform.position = initialPosition + GenerateTranslationalNoise() * shakeMagnitude * trauma * trauma;
+
+        // Rotational shake
+        Quaternion shakeRotation = Quaternion.Euler(GenerateRotationalNoise() * shakeMagnitude * trauma * trauma);
+        transform.rotation = transform.rotation * shakeRotation;
     }
 
-    Vector3 GenerateNoise()
+    Vector3 GenerateTranslationalNoise()
     {
         // The reason we multiply by 2 and subtract 1 is to get a value between -1 and 1
         return new Vector3(Mathf.PerlinNoise(perlinSeed, Time.time * shakingViolence) * 2 - 1,
                            Mathf.PerlinNoise(perlinSeed + 1, Time.time * shakingViolence) * 2 - 1, 
                            0f);
+    }
+
+    Vector3 GenerateRotationalNoise()
+    {
+        return new Vector3(0f, 0f, Mathf.PerlinNoise(perlinSeed + 2, Time.time * shakingViolence) * 2 - 1);
     }
 }
