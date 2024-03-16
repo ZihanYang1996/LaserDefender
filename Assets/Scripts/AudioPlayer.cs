@@ -143,16 +143,15 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
+    // Maybe if there are three audio sources, we don't need a lock anymore
     IEnumerator FadeOut(AudioSource audioSource, float fadeTime)
     {
         while (audioSourceLocks[audioSource])
 
         {
-            Debug.Log("Fade Out Waiting");
             yield return null;
         }
         audioSourceLocks[audioSource] = true; // lock the audio source
-        Debug.Log("Fading Out Locked");
 
         float startVolume = audioSource.volume;
         float time = 0;
@@ -166,18 +165,15 @@ public class AudioPlayer : MonoBehaviour
 
         audioSource.Stop();
         audioSourceLocks[audioSource] = false;  // unlock the audio source
-        Debug.Log("Fading Out Unlocked");
     }
 
     IEnumerator FadeIn(AudioSource audioSource, AudioClip music, float targetVolumn, float fadeTime)
     {
         while (audioSourceLocks[audioSource])
         {
-            Debug.Log("Fade In Waiting");
             yield return null;
         }
         audioSourceLocks[audioSource] = true; // lock the audio source
-        Debug.Log("Fading In Locked");
         audioSource.clip = music;
         audioSource.Play();
 
@@ -191,6 +187,5 @@ public class AudioPlayer : MonoBehaviour
 
         audioSource.volume = targetVolumn;  // ensure the volume is set to the original value
         audioSourceLocks[audioSource] = false;  // unlock the audio source
-        Debug.Log("Fading In Unlocked");
     }
 }

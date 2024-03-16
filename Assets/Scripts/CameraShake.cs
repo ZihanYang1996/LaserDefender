@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    [SerializeField] float shakeMagnitude = 1.5f;
-    [SerializeField] float shakingViolence = 15f;
+    [SerializeField] float translationalShakeMagnitude = 2f;
+    [SerializeField] float translationalShakingViolence = 15f;
+    [SerializeField] float rotationalShakeMagnitude = 15f;
+    [SerializeField] float rotationalShakingViolence = 15f;
     [SerializeField] float traumaDecay = 1f;  // How quickly the trauma fades
     [SerializeField] float defaultTraumaIncrease = 0.5f;
 
     Vector3 initialPosition;
+    Quaternion initialRotation;
+
     float perlinSeed;
 
     bool cameraShakeActive = true;
@@ -22,6 +26,7 @@ public class CameraShake : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
+        initialRotation = transform.rotation;
         perlinSeed = Random.Range(0f, 100f);  // Randomize the seed, set between 0 and 1 for now
     }
 
@@ -55,23 +60,23 @@ public class CameraShake : MonoBehaviour
     void Shake()
     {
         // Translational shake
-        transform.position = initialPosition + GenerateTranslationalNoise() * shakeMagnitude * trauma * trauma;
+        transform.position = initialPosition + GenerateTranslationalNoise() * translationalShakeMagnitude * trauma * trauma;
 
         // Rotational shake
-        Quaternion shakeRotation = Quaternion.Euler(GenerateRotationalNoise() * shakeMagnitude * trauma * trauma);
-        transform.rotation = transform.rotation * shakeRotation;
+        Quaternion shakeRotation = Quaternion.Euler(GenerateRotationalNoise() * rotationalShakeMagnitude * trauma * trauma);
+        transform.rotation = initialRotation * shakeRotation;
     }
 
     Vector3 GenerateTranslationalNoise()
     {
         // The reason we multiply by 2 and subtract 1 is to get a value between -1 and 1
-        return new Vector3(Mathf.PerlinNoise(perlinSeed, Time.time * shakingViolence) * 2 - 1,
-                           Mathf.PerlinNoise(perlinSeed + 1, Time.time * shakingViolence) * 2 - 1, 
+        return new Vector3(Mathf.PerlinNoise(perlinSeed, Time.time * translationalShakingViolence) * 2 - 1,
+                           Mathf.PerlinNoise(perlinSeed + 1, Time.time * translationalShakingViolence) * 2 - 1, 
                            0f);
     }
 
     Vector3 GenerateRotationalNoise()
     {
-        return new Vector3(0f, 0f, Mathf.PerlinNoise(perlinSeed + 2, Time.time * shakingViolence) * 2 - 1);
+        return new Vector3(0f, 0f, Mathf.PerlinNoise(perlinSeed + 2, Time.time * rotationalShakingViolence) * 2 - 1);
     }
 }
