@@ -65,7 +65,7 @@ public class Health : MonoBehaviour
     {
         if (applyCameraShake && cameraShake != null)
         {
-            cameraShake.Play();
+            cameraShake.ShakeCamera();
         }
     }
 

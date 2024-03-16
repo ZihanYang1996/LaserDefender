@@ -458,8 +458,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e2f9474b01612448910cfa35145711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDuration: 0.5
-  shakeMagnitude: 0.5
+  shakeMagnitude: 1.5
+  shakingViolence: 15
+  traumaDecay: 1
+  defaultTraumaIncrease: 0.5
+  trauma: 0
 --- !u!1 &580158035
 GameObject:
   m_ObjectHideFlags: 0
